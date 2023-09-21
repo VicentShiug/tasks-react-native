@@ -5,16 +5,16 @@ import { getFirestore, collection, getDocs, query, where, deleteDoc, doc, addDoc
 import {database} from '../../config/firebase-config'
 import styles from "./style"
 
-export default function NewTask ({navigation}) {
+export default function NewTask ({navigation, route}) {
   const [description, setDescription] = useState('')
 
   async function addTask () {
     try {
-      await addDoc(collection(database, "Tasks"), {
+      await addDoc(collection(database, route.params.idUser), {
         description,
         status: false
       })
-      navigation.navigate('Task')
+      navigation.navigate('Task', {idUser: route.params.idUser})
     }
     catch (e) {
       console.log(e)
