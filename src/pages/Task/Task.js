@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
+import { useFocusEffect } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -15,22 +16,23 @@ export default function Task ({navigation}) {
 
   async function deleteTask (id) {
     await deleteDoc(doc(database, 'Tasks', id))
+    await getAll()
   }
 
-  useEffect(() => {
-    const getAll = async () => {
-      const q = query(collection(database, 'Tasks'))
-      const querySnapshot = await getDocs(q)
-      const list = []
-      querySnapshot.forEach((doc) => {
-        list.push({ ...doc.data(), id: doc.id })
-      })
-      setTask(list)
-    }
+  const getAll = async () => {
+    const q = query(collection(database, 'Tasks'))
+    const querySnapshot = await getDocs(q)
+    const list = []
+    querySnapshot.forEach((doc) => {
+      list.push({ ...doc.data(), id: doc.id })
+    })
+    setTask(list)
+  }
+
+
+  useFocusEffect(useCallback(() => {
     getAll()
-
-
-  }, [])
+  },[]))
   
   
 
