@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 
 import { getFirestore, collection, getDocs, query, where, deleteDoc, doc, addDoc } from 'firebase/firestore/lite';
-import database from '../../config/firebase-config'
+import {database} from '../../config/firebase-config'
 import styles from "./style"
 
 export default function NewTask ({navigation}) {

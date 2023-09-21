@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native' 
-import database from '../../config/firebase-config'
+import {database} from '../../config/firebase-config'
 import {FontAwesome} from '@expo/vector-icons'
 import { getFirestore, collection, getDocs, query, where, deleteDoc, doc} from 'firebase/firestore/lite';
 import styles from './style'
