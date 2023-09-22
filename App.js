@@ -5,6 +5,7 @@ import NewTask from './src/pages/NewTask/NewTask';
 import Details from './src/pages/Details/Details';
 import Login from './src/pages/Login/Login';
 import NewUser from './src/pages/NewUser/NewUser';
+import { Button } from 'react-native-web';
 
 const Stack = createStackNavigator()
 
@@ -34,7 +35,7 @@ export default function App() {
           options={{
             headerTintColor: "#f92e6a",
             animationEnabled: true,
-            headerLeft: null
+            headerLeft: false
           }}
         />
         <Stack.Screen 

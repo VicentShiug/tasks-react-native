@@ -39,6 +39,10 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 16,
     fontWeight: 'bold'
+  },
+  statusTask: {
+    marginTop: 20,
+    marginLeft: 20
   }
 })
 

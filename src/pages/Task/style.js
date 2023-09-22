@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   deleteTask: {
     justifyContent: 'center',
-    paddingLeft: 15,
+    paddingRight: 20,
   },
   DescriptionTask: {
     width: '75%',
@@ -24,7 +24,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 50,
     marginBottom: 5,
-    marginRight: 15,
+    marginLeft: 20,
+    color: '#282b2db5'
+  },
+  DescriptionTaskOk: {
+    width: '75%',
+    alignContent: 'flex-start',
+    backgroundColor: '#9CFC97',
+    padding: 12,
+    paddingHorizontal: 20,
+    borderRadius: 50,
+    marginBottom: 5,
+    marginLeft: 20,
     color: '#282b2db5'
   },
   buttonNewTask: {
@@ -39,6 +50,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconButton: {
+    color: "#ffffff",
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  buttonLogOut: {
+    width: 60,
+    height:60,
+    position: 'absolute',
+    bottom: 30,
+    right: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  iconButtonLogOut: {
     color: "#ffffff",
     fontSize: 25,
     fontWeight: 'bold'
