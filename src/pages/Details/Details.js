@@ -14,10 +14,10 @@ export default function Details ({ navigation, route }) {
 
   async function editTask (description, id) {
     try {
-      await updateDoc(doc(database, 'Tasks', id), {
+      await updateDoc(doc(database, route.params.idUser, id), {
         description
       })
-      navigation.navigate('Task')
+      navigation.navigate('Task', {idUser: route.params.idUser})
     } catch (e) {
       console.log(e)
     }

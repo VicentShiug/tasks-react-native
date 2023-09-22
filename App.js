@@ -33,7 +33,8 @@ export default function App() {
           component={Task}
           options={{
             headerTintColor: "#f92e6a",
-            animationEnabled: true
+            animationEnabled: true,
+            headerLeft: null
           }}
         />
         <Stack.Screen 

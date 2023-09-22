@@ -12,7 +12,7 @@ import {
 import { app } from '../../config/firebase-config'
 import styles from './style'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 
 export default function Login ({ navigation }) {
@@ -28,8 +28,8 @@ export default function Login ({ navigation }) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigation.navigate('Task', {idUser: user.uid})
-      })
+        navigation.navigate('Task', { idUser: user.uid })
+  })
       .catch((error) => {
         setError(true)
         const errorCode = error.code;
@@ -37,7 +37,15 @@ export default function Login ({ navigation }) {
       });
   }
 
-  useEffect(() => { }, [])
+  useEffect(() => {
+    const auth = getAuth(app);
+    onAuthStateChanged(auth, (user) => {
+      if (user != null) {
+        navigation.navigate('Task', { idUser: user.uid })
+        console.log(user)
+      } 
+    })
+  }, [])
 
   return (
     <KeyboardAvoidingView

@@ -11,16 +11,16 @@ import {FontAwesome} from '@expo/vector-icons'
 import { getFirestore, collection, getDocs, query, where, deleteDoc, doc} from 'firebase/firestore/lite';
 import styles from './style'
 
-export default function Task ({navigation}) {
+export default function Task ({navigation, route}) {
   const [task, setTask] = useState([])
 
   async function deleteTask (id) {
-    await deleteDoc(doc(database, 'Tasks', id))
+    await deleteDoc(doc(database, route.params.idUser, id))
     await getAll()
   }
 
   const getAll = async () => {
-    const q = query(collection(database, 'Tasks'))
+    const q = query(collection(database, route.params.idUser))
     const querySnapshot = await getDocs(q)
     const list = []
     querySnapshot.forEach((doc) => {
@@ -65,7 +65,8 @@ export default function Task ({navigation}) {
               onPress={() => {
                 navigation.navigate('Details', {
                 id: item.id,
-                description: item.description
+                  description: item.description,
+                  idUser: route.params.idUser
                 })
               }}
             >
@@ -77,7 +78,7 @@ export default function Task ({navigation}) {
       />
       <TouchableOpacity
         style={styles.buttonNewTask}
-        onPress={()=> navigation.navigate('New Task')}
+        onPress={()=> navigation.navigate('New Task', {idUser: route.params.idUser})}
       >
         <Text
           style={styles.iconButton} >
